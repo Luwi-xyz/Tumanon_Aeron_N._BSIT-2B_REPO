@@ -1,8 +1,10 @@
 // Declared Var
 
-var location1 = 3;
-var location2 = 4;
-var location3 = 5;
+var randomLoc = Math.floor(Math.random() *5);
+
+var location1 = randomLoc;
+var location2 = location1 + 1;
+var location3 = location2 + 1;
  
 var guess;
 var hits = 0;
@@ -14,6 +16,10 @@ var isSunk = false;
 
 while (isSunk == false) {
     guess = prompt("Ready!, Aim!, Fire! (Enter number 0-6)");
+    if (guess == null){
+        alert("k salamat!");
+        break;
+    }
 
     if (guess < 0 || guess > 6 ){
         alert("Error! Please Enter a Valid Number.")
@@ -30,17 +36,20 @@ while (isSunk == false) {
             if (hits == 3){
                 isSunk = true;
                 alert (" You Sunk the Ship!")
-            }else{
+
+            }
+        }else{
                 alert("Miss!")
             }
             }
                 
 
         }
-    }
+var accuracy = (guesses > 0 ? (hits/guesses) *100: 0).toFixed(2);
+    
 
 
-var stats = "You sank my battership at " + guesses + " guesses" +
-"and your accuracy is" + (3/guesses);
+var stats = "You sank my battership at " + guesses + " guesses" + "\n"+
+"accuracy: " + accuracy + "%"
 
 alert(stats);
